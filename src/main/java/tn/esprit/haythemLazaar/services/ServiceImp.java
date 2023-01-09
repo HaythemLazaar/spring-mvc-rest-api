@@ -1,7 +1,11 @@
 package tn.esprit.haythemLazaar.services;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.*;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
@@ -82,10 +86,15 @@ public class ServiceImp implements InterfaceService{
         }
         return rep;
     }
+
+    @Scheduled(fixedRate = 30000)
     @Override
     public void getAllTransactionByDate() {
-        // TODO Auto-generated method stub
-        
+        Date today = new Date();
+        transactionRepository.findAll().stream()
+            .forEach(t -> {
+                if(t.getDateTransaction().equals(today)) System.out.println(t.toString());
+            });
     }
     @Override
     public List<Transaction> getAllTransactionByBankId(Long idBank) {
@@ -98,7 +107,4 @@ public class ServiceImp implements InterfaceService{
         return null;
     }
 
-// Execution chaque 60s
-    //@Scheduled(fixedRate = 60000)
-    //@Override
 }
