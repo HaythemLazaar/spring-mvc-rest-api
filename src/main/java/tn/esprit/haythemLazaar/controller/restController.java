@@ -14,4 +14,32 @@ public class restController {
     InterfaceService service;
     
 // API Routes
+    @PostMapping("/addBank")
+    public Bank ajouterBank(@RequestBody Bank bank) {
+        return service.ajouterBank(bank);
+    }
+    
+    @PostMapping("/addCompteAgence/{agenceBank}")
+    Compte ajouterCompteEtAffecterAAgence(
+        @RequestBody Compte compte,
+        @PathVariable String agenceBank
+        ){
+        return service.ajouterCompteEtAffecterAAgence(compte, agenceBank);
+    }
+
+    @PostMapping("/addVirement")
+    String ajouterVirement(Transaction transaction){
+        return service.ajouterVirement(transaction);
+    }
+
+    @PostMapping("/addRetrait")
+    String ajouterRetrait(Transaction transaction){
+        return service.ajouterRetrait(transaction);
+    }
+
+    @PostMapping("/addVersement")
+    String ajouterVersement(Transaction transaction){
+        return service.ajouterVersement(transaction);
+    }
+
 }
