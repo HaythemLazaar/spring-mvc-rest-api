@@ -18,11 +18,11 @@ public class restController {
     public Bank ajouterBank(@RequestBody Bank bank) {
         return service.ajouterBank(bank);
     }
-    
+
     @PostMapping("/addCompteAgence/{agenceBank}")
     Compte ajouterCompteEtAffecterAAgence(
         @RequestBody Compte compte,
-        @PathVariable String agenceBank
+        @PathVariable("agenceBank") String agenceBank
         ){
         return service.ajouterCompteEtAffecterAAgence(compte, agenceBank);
     }

@@ -30,12 +30,11 @@ public class ServiceImp implements InterfaceService{
     public Compte ajouterCompteEtAffecterAAgence(Compte compte, String agenceBank) {
         compteRepository.save(compte);
         Bank bank = bankRepository.findAll().stream().filter(b -> b.getAgence() == agenceBank).findFirst().orElse(null);
-        Set<Compte> comptes;
-        if(bank.getComptes().size() > 0) {
+        Set<Compte> comptes = new HashSet<Compte>();
+        if(bank.getComptes().size() > 0){
             comptes = bank.getComptes();
             comptes.add(compte);
         }else{
-            comptes = new HashSet<Compte>();
             comptes.add(compte);
         }
         bank.setComptes(comptes);

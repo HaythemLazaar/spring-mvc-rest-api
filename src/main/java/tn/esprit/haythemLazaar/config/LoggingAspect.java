@@ -1,6 +1,8 @@
 package tn.esprit.haythemLazaar.config;
 
 
+import java.util.Date;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,9 +15,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
-    @After("execution(* tn.esprit.haythemLazaar.services.*.*(..))")
+    Date today = new Date();
+    @After("execution(* tn.esprit.haythemLazaar.services.*.get*(..))")
     public void logExecution(JoinPoint joinPoint) {
         // Log message
-        logger.info("Method executed" + joinPoint.getSignature().getName());
+        logger.info(today.toString());
     }
 }
