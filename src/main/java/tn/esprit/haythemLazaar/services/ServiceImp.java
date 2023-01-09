@@ -13,7 +13,9 @@ import tn.esprit.haythemLazaar.repository.*;
 @Service
 public class ServiceImp implements InterfaceService{
 // Injection des Repos
-    PersonnelRepository personnelRepository;
+    CompteRepository compteRepository;
+    BankRepository bankRepository;
+    TransactionRepository transactionRepository;
 
 // Methodes du service
 

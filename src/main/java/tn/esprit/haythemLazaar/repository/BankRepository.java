@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.haythemLazaar.entities.*;
 
 @Repository
-public interface PersonnelRepository extends JpaRepository<Personnel, Long>{
+public interface BankRepository extends JpaRepository<Bank, Long>{
 }

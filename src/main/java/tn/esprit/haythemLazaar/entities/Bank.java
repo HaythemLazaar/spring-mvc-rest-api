@@ -7,24 +7,20 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "Personnel")
+@Table(name = "Bank")
 @Getter
 @Setter
-public class Personnel {
+public class Bank {
 // Colonnes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Personnel")
-    private long idPersonnel;
+    @Column(name = "id_Bank")
+    private long idBank;
     private String nom;
-    private String prenom;
-// Date
-    @Temporal(TemporalType.DATE)
-    private Date dateDerniereAffectation;
-// ENUM
-    private TypePersonnel typePersonnel;
-
+    private String agence;
+    private String adresse;
 
 // Associations
-
+    @OneToMany(cascade = CascadeType.ALL)
+    Set<Compte> comptes;
 }
